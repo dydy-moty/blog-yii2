@@ -15,14 +15,40 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-//    public function actions()
-//    {
-//        return [
-//            'error' => [
-//                'class' => 'yii\web\ErrorAction',
-//            ],
-//        ];
-//    }
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
 
     public function actionIndex()
     {
@@ -34,4 +60,16 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionView()
+    {
+        return $this->render('single');
+    }
+
+    public function actionCategory()
+    {
+        return $this->render('category');
+    }
+
+
 }
