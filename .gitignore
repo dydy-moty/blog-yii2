@@ -43,4 +43,3 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.txt
 
-# End of https://www.toptal.com/developers/gitignore/api/yii2
