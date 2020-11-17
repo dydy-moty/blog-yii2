@@ -177,6 +177,12 @@ class Article extends \yii\db\ActiveRecord
         return Article::find()->orderBy('viewed asc')->limit(3)->all();;
     }
 
+    public function saveArticle()
+    {
+        $this->user_id = Yii::$app->user->id;
+        return $this->save();
+    }
+
 
 }
 
