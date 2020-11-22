@@ -3,7 +3,10 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\ArticleTag;
 use app\models\Category;
+use app\models\CommentForm;
+use app\models\Tag;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -82,12 +85,16 @@ class SiteController extends Controller
         $popular = Article::getPopular();
         $recent =  Article::getRecent();
         $categories = Category::getAll();
+        $comments = $article->getArticleComments();
+        $commentForm = new CommentForm();
 
         return $this->render('single', [
             'article' => $article,
             'popular' => $popular,
             'recent' => $recent,
             'categories' => $categories,
+            'comments' => $comments,
+            'commentForm' => $commentForm,
         ]);
     }
 
@@ -108,6 +115,45 @@ class SiteController extends Controller
             'categories' => $categories,
         ]);
     }
+
+
+    public function actionTags($id)
+    {
+
+        $tags = Tag::findOne($id);
+        $articles = $tags->articles;
+//        $data = Tag::getArticlesByTag($id);
+
+        $popular = Article::getPopular();
+        $recent =  Article::getRecent();
+        $categories = Category::getAll();
+
+
+        return $this->render('tags', [
+            'articles' => $articles,
+//            'articles' => $data['articles'],
+//            'pagination' => $data['pagination'],
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function actionComment($id)
+    {
+        $model = new CommentForm();
+        if (Yii::$app->request->isPost) {
+
+            $model->load(Yii::$app->request->post());
+            if ($model->saveComment($id)) {
+
+                Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
+                return $this->redirect(['site/view', 'id' => $id]);
+            }
+        }
+    }
+
+
 
 
 }

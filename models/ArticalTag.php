@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "artical_tag".
@@ -42,4 +43,6 @@ class ArticalTag extends \yii\db\ActiveRecord
             'tag_id' => 'Tag ID',
         ];
     }
+
+//
 }

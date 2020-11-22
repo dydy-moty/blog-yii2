@@ -118,11 +118,13 @@ class Article extends \yii\db\ActiveRecord
             ->viaTable('article_tag', ['article_id' => 'id']);
     }
 
+
     public function getSelectedTags()
     {
         $selectedTags = $this->getTags()->select('id')->asArray()->all();
         return ArrayHelper::getColumn($selectedTags,'id');
     }
+
 
     public function saveTags($tags)
     {
@@ -132,8 +134,10 @@ class Article extends \yii\db\ActiveRecord
 
             foreach ($tags as $tag_id)
             {
+
             $tag = Tag::findOne($tag_id);
             $this->link('tags', $tag);
+
             }
         }
     }
@@ -183,6 +187,15 @@ class Article extends \yii\db\ActiveRecord
         return $this->save();
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['article_id' => 'id']);
+    }
+
+    public function getArticleComments()
+    {
+        return $this->getComments()->where(['status' => 1])->all();
+    }
 
 }
 
