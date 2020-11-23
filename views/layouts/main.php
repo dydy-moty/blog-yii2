@@ -47,9 +47,14 @@ PublicAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
-
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
                     </li>
+                    <?php if (Yii::$app->user->identity->isAdmin): ?>
+                        <li>
+                            <a class="btn"  href="<?= Url::toRoute(['/admin']); ?>"><b>Администрирование</b></a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">

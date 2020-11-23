@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td>#</td>
                 <td>Author</td>
                 <td>Text</td>
+                <td>Article_id</td>
                 <td>Action</td>
 
                 <tbody>
@@ -34,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= $comment->id ?></td>
                     <td><?= $comment->user->name ?></td>
                     <td><?= $comment->text ?></td>
+                    <td><?= $comment->article->id ?></td>
                     <td>
                         <?php if ($comment->isAllowed()): ?>
                             <a class="btn btn-warning"  href="<?= Url::toRoute(['comment/disallow', 'id' => $comment->id]); ?>">Disallow</a>
