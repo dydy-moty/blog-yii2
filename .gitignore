@@ -46,4 +46,6 @@ phpunit.phar
 #
 /web/ckeditor
 /web/ckfinder
+/web/uploads
+/web/markup
 

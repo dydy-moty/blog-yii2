@@ -154,7 +154,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
 
-    public static function getAll($pageSize = 5)
+    public static function getAll($pageSize = 6)
     {
         $query = Article::find();
 
@@ -178,7 +178,7 @@ class Article extends \yii\db\ActiveRecord
 
     public static function getRecent()
     {
-        return Article::find()->orderBy('viewed asc')->limit(3)->all();;
+        return Article::find()->orderBy('viewed asc')->limit(3)->all();
     }
 
     public function saveArticle()
@@ -196,6 +196,19 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->getComments()->where(['status' => 1])->all();
     }
+
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(),['id'=>'user_id']);
+    }
+
+    public function viewesCounter()
+    {
+        $this->viewed += 1;
+        return $this->save(false);
+    }
+
+
 
 }
 

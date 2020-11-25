@@ -11,6 +11,7 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-md-8">
                 <?php foreach ($articles as $article):?>
+
                     <article class="post">
                         <div class="post-thumb">
                             <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]); ?>"><img src="<?= $article->getImage() ?>" alt=""></a>
@@ -38,13 +39,14 @@ use yii\widgets\LinkPager;
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a><?= $article->getDate(); ?></span>
+                                <span class="social-share-title pull-left text-capitalize">By <?= $article->author->name ?><?= $article->getDate(); ?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int) $article->viewed ?>
                                 </ul>
                             </div>
                         </div>
                 </article>
+
                 <?php endforeach; ?>
                 <?php
 
