@@ -37,7 +37,4 @@ class PublicAsset extends AssetBundle
     "public/js/menu.js",
     "public/js/scripts.js",
     ];
-    public $depends = [
-
-    ];
 }

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use phpDocumentor\Reflection\Types\This;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
@@ -53,18 +54,19 @@ class Article extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
+            'id'          => 'ID',
+            'title'       => 'Title',
             'description' => 'Description',
-            'content' => 'Content',
-            'date' => 'Date',
-            'image' => 'Image',
-            'viewed' => 'Viewed',
-            'user_id' => 'User ID',
-            'status' => 'Status',
+            'content'     => 'Content',
+            'date'        => 'Date',
+            'image'       => 'Image',
+            'viewed'      => 'Viewed',
+            'user_id'     => 'User ID',
+            'status'      => 'Status',
             'category_id' => 'Category ID',
         ];
     }
+
 
     public function saveImage($filename)
     {
@@ -171,6 +173,11 @@ class Article extends \yii\db\ActiveRecord
         return $data;
     }
 
+    public static function getAllArticles()
+    {
+        return $articlesId = Article::find()->select('title')->asArray()->all();
+    }
+
     public static function getPopular()
     {
         return Article::find()->orderBy('viewed desc')->limit(3)->all();
@@ -178,7 +185,7 @@ class Article extends \yii\db\ActiveRecord
 
     public static function getRecent()
     {
-        return Article::find()->orderBy('viewed asc')->limit(3)->all();
+        return Article::find()->orderBy('viewed asc')->limit(2)->all();
     }
 
     public function saveArticle()
@@ -207,6 +214,34 @@ class Article extends \yii\db\ActiveRecord
         $this->viewed += 1;
         return $this->save(false);
     }
+
+
+    public function getUrlPrev()
+    {
+        $article_IdArray = Article::find()
+            ->select('id')
+            ->where('id <' . $this->id)
+            ->orderBy(['id' => SORT_DESC])
+            ->limit(1)
+            ->asArray()
+            ->all();
+
+        return ($article_IdArray) ? $article_Id = ArrayHelper::getColumn($article_IdArray, 'id')[0] : null;
+    }
+
+    public function getUrlNext()
+    {
+        $article_IdArray = Article::find()
+            ->select('id')
+            ->where('id >' . $this->id)
+            ->orderBy(['id' => SORT_ASC])
+            ->limit(1)
+            ->asArray()
+            ->all();
+
+        return ($article_IdArray) ? $article_Id = ArrayHelper::getColumn($article_IdArray, 'id')[0] : null;
+    }
+
 
 
 

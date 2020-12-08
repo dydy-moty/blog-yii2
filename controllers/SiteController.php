@@ -58,16 +58,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $data = Article::getAll(2);
-        $popular = Article::getPopular();
-        $recent =  Article::getRecent();
+        $data       = Article::getAll(3);
+        $popular    = Article::getPopular();
+        $recent     = Article::getRecent();
         $categories = Category::getAll();
 
         return $this->render('index', [
-            'articles' => $data['articles'],
+            'articles'   => $data['articles'],
             'pagination' => $data['pagination'],
-            'popular' => $popular,
-            'recent' => $recent,
+            'popular'    => $popular,
+            'recent'     => $recent,
             'categories' => $categories,
         ]);
     }
@@ -81,39 +81,46 @@ class SiteController extends Controller
 
     public function actionView($id)
     {
-        $article = Article::findOne($id);
-        $popular = Article::getPopular();
-        $recent =  Article::getRecent();
-        $categories = Category::getAll();
-        $comments = $article->getArticleComments();
-        $commentForm = new CommentForm();
+        $article            = Article::findOne($id);
+        $popular            = Article::getPopular();
+        $recent             = Article::getRecent();
+        $categories         = Category::getAll();
+        $comments           = $article->getArticleComments();
+        $commentForm        = new CommentForm();
+        $previousArticlesId = $article->getUrlPrev();//previous articles
+        $nextArticlesId     = $article->getUrlNext();   //next articles
+
+        if ($previousArticlesId)
+        {
+        Yii::$app->getSession()->setFlash('alert', 'This is the first article!');//for next and previous articles
+        }
 
         $article->viewesCounter();
-
+//echo '<pre>'; var_dump ($previousArticlesId); echo '</pre>'; die();
         return $this->render('single', [
-            'article' => $article,
-            'popular' => $popular,
-            'recent' => $recent,
-            'categories' => $categories,
-            'comments' => $comments,
-            'commentForm' => $commentForm,
+            'article'            => $article,
+            'popular'            => $popular,
+            'recent'             => $recent,
+            'categories'         => $categories,
+            'comments'           => $comments,
+            'commentForm'        => $commentForm,
+            'previousArticlesId' => $previousArticlesId,//previous articles
+            'nextArticlesId'     => $nextArticlesId,//Next articles
         ]);
     }
 
     public function actionCategory($id)
     {
-        $data = Category::getArticlesByCategory($id);
-
-        $popular = Article::getPopular();
-        $recent =  Article::getRecent();
+        $data       = Category::getArticlesByCategory($id);
+        $popular    = Article::getPopular();
+        $recent     =  Article::getRecent();
         $categories = Category::getAll();
 
-
         return $this->render('category', [
-            'articles' => $data['articles'],
+            'articles'   => $data['articles'],
             'pagination' => $data['pagination'],
-            'popular' => $popular,
-            'recent' => $recent,
+            'popular'    => $popular,
+            'recent'     => $recent,
             'categories' => $categories,
         ]);
     }
@@ -122,21 +129,21 @@ class SiteController extends Controller
     public function actionTags($id)
     {
 
-        $tags = Tag::findOne($id);
+        $tags     = Tag::findOne($id);
         $articles = $tags->articles;
-//        $data = Tag::getArticlesByTag($id);
+//        $data     = Tag::getArticlesByTag($id);
 
-        $popular = Article::getPopular();
-        $recent =  Article::getRecent();
+        $popular    = Article::getPopular();
+        $recent     = Article::getRecent();
         $categories = Category::getAll();
 
 
         return $this->render('tags', [
-            'articles' => $articles,
-//            'articles' => $data['articles'],
+            'articles'   => $articles,
+//            'articles'   => $data['articles'],
 //            'pagination' => $data['pagination'],
-            'popular' => $popular,
-            'recent' => $recent,
+            'popular'    => $popular,
+            'recent'     => $recent,
             'categories' => $categories,
         ]);
     }

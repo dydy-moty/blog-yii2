@@ -24,6 +24,7 @@
         });
     }());
 
+
     /* === Instagram Widget === */
 
     (function () {

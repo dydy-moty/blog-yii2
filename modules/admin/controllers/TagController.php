@@ -35,11 +35,11 @@ class TagController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TagSearch();
+        $searchModel  = new TagSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

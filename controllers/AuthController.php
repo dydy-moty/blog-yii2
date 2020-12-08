@@ -44,6 +44,7 @@ class AuthController extends Controller
 
         if (Yii::$app->request->isPost)
         {
+
             $model->load(Yii::$app->request->post());
             if ($model->signup())
             {

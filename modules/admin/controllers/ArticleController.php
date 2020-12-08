@@ -42,11 +42,11 @@ class ArticleController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
+        $searchModel  = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -155,9 +155,9 @@ class ArticleController extends Controller
     public function actionSetCategory($id)
     {
 
-        $article = $this->findModel($id);
+        $article          = $this->findModel($id);
         $selectedCategory = $article->category->id;
-        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+        $categories       = ArrayHelper::map(Category::find()->all(), 'id', 'title');
 
         if (Yii::$app->request->isPost)
         {
@@ -171,9 +171,9 @@ class ArticleController extends Controller
 
 
         return $this->render('category', [
-            'article' => $article,
+            'article'          => $article,
             'selectedCategory' => $selectedCategory,
-            'categories' => $categories,
+            'categories'       => $categories,
 
         ]);
 
@@ -184,9 +184,9 @@ class ArticleController extends Controller
     public function actionSetTags($id)
     {
 
-        $article = $this->findModel($id);
+        $article      = $this->findModel($id);
         $selectedTags = $article->getSelectedTags();
-        $tags =  ArrayHelper::map(Tag::find()->all(), 'id', 'title');
+        $tags         = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
 
 
       if (Yii::$app->request->isPost)

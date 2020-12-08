@@ -3,7 +3,7 @@
 
         <div class="bottom-comment">
             <!--bottom comment-->
-<!--            <h4>comment</h4>-->
+            <!--<h4>comment</h4>-->
 
             <div class="comment-img">
                 <img width="50" class="img-circle" src="<?= $comment->user->image; ?>" alt="">

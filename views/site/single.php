@@ -46,108 +46,74 @@ use yii\helpers\Url;
                 <div class="top-comment">
           <!--top comment-->
                     <img src="/public/images/comment.jpg" class="pull-left img-circle" alt="">
-                    <h4>Rubel Miah</h4>
+                    <h4><?= $article->author->name ?></h4>
 
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
                         invidunt ut labore et dolore magna aliquyam erat.</p>
                 </div>
           <!--top comment end-->
                 <div class="row">
-<!--                    blog next previous-->
+                    <!--previous article-->
                     <div class="col-md-6">
                         <div class="single-blog-box">
-                            <a href="#">
+                            <?php if ($previousArticlesId != null ): ?>
+                               <a href="<?= Url::toRoute(['site/view', 'id' => $previousArticlesId ]) ?>">
+                            <?php endif; ?>
+
                                 <img src="/public/images/blog-next.jpg" alt="">
-
                                 <div class="overlay">
-
                                     <div class="promo-text">
                                         <p><i class=" pull-left fa fa-angle-left"></i></p>
-                                        <h5>Rubel is doing Cherry theme</h5>
+                                                <h5>Previous article</h5>
                                     </div>
                                 </div>
-
-
                             </a>
                         </div>
                     </div>
+<!--                    --><?php //if () ?>
+<!--                    <div class="alert alert-success" role="alert">-->
+<!--                        --><?//= Yii::$app->session->getFlash('alert'); ?>
+<!--                    </div>-->
+                    <!-- end previous article-->
+                    <!--next next article-->
                     <div class="col-md-6">
                         <div class="single-blog-box">
-                            <a href="#">
+                            <?php if ($nextArticlesId != null ): ?>
+                               <a href="<?= Url::toRoute(['site/view', 'id' => $nextArticlesId ]) ?>">
+                            <?php endif; ?>
                                 <img src="/public/images/blog-next.jpg" alt="">
 
                                 <div class="overlay">
                                     <div class="promo-text">
                                         <p><i class=" pull-right fa fa-angle-right"></i></p>
-                                        <h5>Rubel is doing Cherry theme</h5>
-
+                                        <h5>Next article</h5>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-<!--                    blog next previous end-->
-<!--                <div class="related-post-carousel">-->
-<!--                    related post carousel-->
-<!--                    <div class="related-heading">-->
-<!--                        <h4>You might also like</h4>-->
-<!--                    </div>-->
-<!--                    <div class="items">-->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-1.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!---->
-<!---->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-2.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!---->
-<!---->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-3.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!---->
-<!---->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-1.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-2.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!---->
-<!---->
-<!--                        <div class="single-item">-->
-<!--                            <a href="#">-->
-<!--                                <img src="/public/images/related-post-3.jpg" alt="">-->
-<!---->
-<!--                                <p>Just Wondering at Beach</p>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                    related post carousel-->
+                <!--next next article-->
+
+                <!-- related post carousel-->
+
+           <!--     <div class="related-post-carousel">
+                    <div class="related-heading">
+                        <h4>You might also like</h4>
+                    </div>
+                    <div class="items" class="thumbnail">
+                        <?//php foreach ($articles as $article): ?>
+                            <div class="single-item col-sm-6 col-md-4 col-lg-3">
+                                <a href="<?//= Url::toRoute(['site/view', 'id' => $article->id ]); ?>" class="thumbnail">
+                                    <img src="<?//= $article->getImage(); ?>"  alt="">
+                                </a>
+                            </div>
+                        <?//php endforeach; ?>
+
+                    </div>
+                </div> -->
+                <!-- related post carousel-->
+
                 <?=
                 $this->render('/partials/comment', [
                     'article' => $article,
