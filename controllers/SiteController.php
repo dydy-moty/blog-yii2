@@ -90,13 +90,13 @@ class SiteController extends Controller
         $previousArticlesId = $article->getUrlPrev();//previous articles
         $nextArticlesId     = $article->getUrlNext();   //next articles
 
-        if ($previousArticlesId)
-        {
-        Yii::$app->getSession()->setFlash('alert', 'This is the first article!');//for next and previous articles
-        }
+        //for next and previous articles
+//        if ($previousArticlesId)
+//        {
+//        Yii::$app->getSession()->setFlash('alert', 'This is the first article!');
+//        }
 
         $article->viewesCounter();
-//echo '<pre>'; var_dump ($previousArticlesId); echo '</pre>'; die();
         return $this->render('single', [
             'article'            => $article,
             'popular'            => $popular,
@@ -105,7 +105,7 @@ class SiteController extends Controller
             'comments'           => $comments,
             'commentForm'        => $commentForm,
             'previousArticlesId' => $previousArticlesId,//previous articles
-            'nextArticlesId'     => $nextArticlesId,//Next articles
+            'nextArticlesId'     => $nextArticlesId,    //next articles
         ]);
     }
 

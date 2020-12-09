@@ -166,6 +166,7 @@ class Article extends \yii\db\ActiveRecord
 
         $articles = $query->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy(['id' => SORT_DESC])
             ->all();
 
         $data['articles'] = $articles;
