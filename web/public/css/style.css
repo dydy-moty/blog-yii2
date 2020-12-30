@@ -1056,6 +1056,7 @@ blog css
 }
 
 .top-comment {
+    /*height: 150px;*/
     padding: 30px;
     background-color: #fff;
     color: #212121;
@@ -1638,5 +1639,24 @@ p.go-back-home a:hover {
     background: #00BFF3;
     color: #fff;
     border-color: #00BFF3;
+}
+
+.btn-top {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #2ecc71;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 40px;
+    border-radius: 50%;
+}
+
+.btn-top:hover {
+    background-color: #27ae60;
 }
 

@@ -13,9 +13,9 @@ class m201109_104647_create_artical_tag_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%article_tag}}', [
-            'id' => $this->primaryKey(),
+            'id'         => $this->primaryKey(),
             'article_id' => $this->integer(),
-            'tag_id' => $this->integer(),
+            'tag_id'     => $this->integer(),
 
         ]);
 

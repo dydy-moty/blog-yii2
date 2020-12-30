@@ -13,7 +13,7 @@ class m201109_104520_create_tag_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%tag}}', [
-            'id' => $this->primaryKey(),
+            'id'    => $this->primaryKey(),
             'title' => $this->string(),
         ]);
     }

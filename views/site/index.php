@@ -48,6 +48,9 @@ use yii\widgets\LinkPager;
                 </article>
 
                 <?php endforeach; ?>
+
+                <button class="btn-top" title="Go to top"> Up </button>
+
                 <?php
 
                 echo LinkPager::widget([

@@ -72,4 +72,21 @@
 
 })(jQuery);
 
+/* === Button 'Go to top' === */
+
+var $btnTop = $('.btn-top')
+$(window).on('scroll', function () {
+    //(условие) при смещении страницы более 20px вниз
+    if ($(window).scrollTop() >= 20) {
+        // кнопка появляется
+        $btnTop.fadeIn();
+    } else {
+        // кнопка растворяется
+        $btnTop.fadeOut();
+    }
+});
+
+$btnTop.on('click', function () {
+    $('html, body').animate({scrollTop:0}, 600)
+});
 

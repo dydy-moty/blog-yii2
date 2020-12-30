@@ -13,11 +13,11 @@ class m201109_104615_create_comment_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%comment}}', [
-            'id' => $this->primaryKey(),
-            'text' => $this->string(),
-            'user_id' => $this->integer(),
+            'id'         => $this->primaryKey(),
+            'text'       => $this->string(),
+            'user_id'    => $this->integer(),
             'article_id' => $this->integer(),
-            'status' => $this->integer(),
+            'status'     => $this->integer(),
 
         ]);
 
