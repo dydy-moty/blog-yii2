@@ -49,3 +49,21 @@ phpunit.phar
 /web/uploads
 /web/markup
 
+/web/public/css/bootstrap.min.css
+/web/public/css/font-awesome.min.cs
+/web/public/css/animate.min.css
+/web/public/css/owl.carousel.css
+/web/public/css/owl.theme.css
+/web/public/css/owl.transitions.cs
+
+/web/public/js/jquery-1.11.3.min.js
+/web/public/js/bootstrap.min.js
+/web/public/js/owl.carousel.min.js
+/web/public/js/jquery.stickit.min.js
+
+/web/public/images
+
+
+
+
+
