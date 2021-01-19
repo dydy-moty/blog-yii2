@@ -43,9 +43,9 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
-                <!--top comment-->
-                <div class="top-comment">
-                    <img src="/public/images/comment.jpg" class="pull-left img-circle" alt="">
+           <!--top comment-->
+                <div class="top-comment ">
+                    <img width="75" src="/public/images/comment.jpg" class="pull-left img-circle" alt="">
                     <h4><?= $article->author->name ?></h4>
 
                     <p>Some text about author.</p>
@@ -53,7 +53,7 @@ use yii\helpers\Url;
           <!--top comment end-->
                 <div class="row">
                     <!--previous article-->
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
                         <div class="single-blog-box">
                             <?php if ($previousArticlesId != null ): ?>
                                <a href="<?= Url::toRoute(['site/view', 'id' => $previousArticlesId ]) ?>">
@@ -69,11 +69,8 @@ use yii\helpers\Url;
                             </a>
                         </div>
                     </div>
-<!--                    --><?php //if () ?>
-<!--                    <div class="alert alert-success" role="alert">-->
-<!--                        --><?//= Yii::$app->session->getFlash('alert'); ?>
-<!--                    </div>-->
                     <!-- end previous article-->
+
                     <!--next next article-->
                     <div class="col-md-6">
                         <div class="single-blog-box">
@@ -94,24 +91,6 @@ use yii\helpers\Url;
                 </div>
                 <!--next next article-->
 
-                <!-- related post carousel-->
-
-           <!--     <div class="related-post-carousel">
-                    <div class="related-heading">
-                        <h4>You might also like</h4>
-                    </div>
-                    <div class="items" class="thumbnail">
-                        <?//php foreach ($articles as $article): ?>
-                            <div class="single-item col-sm-6 col-md-4 col-lg-3">
-                                <a href="<?//= Url::toRoute(['site/view', 'id' => $article->id ]); ?>" class="thumbnail">
-                                    <img src="<?//= $article->getImage(); ?>"  alt="">
-                                </a>
-                            </div>
-                        <?//php endforeach; ?>
-
-                    </div>
-                </div> -->
-                <!-- related post carousel-->
 
                 <?=
                 $this->render('/partials/comment', [

@@ -97,4 +97,21 @@ class Comment extends \yii\db\ActiveRecord
         $this->status = self::STATUS_DISALLOW;
         return $this->save(false);
     }
+
+    public static function getIdCount() {
+        $idCount = Comment::find()
+            ->select('id')
+            ->asArray()
+            ->all();
+        return count($idCount);
+    }
+
+    public static function getStatusCount() {
+        $idCount = Comment::find()
+            ->select('status')
+            ->where(['status' => 0])
+            ->asArray()
+            ->all();
+        return count($idCount);
+    }
 }

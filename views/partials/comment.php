@@ -10,7 +10,7 @@
             </div>
 
             <div class="comment-text">
-                <a href="#" class="replay btn pull-right"> Replay</a>
+                <a href="#" class="replay btn pull-right"> Replay </a>
                 <h5><?= $comment->user->name; ?></h5>
 
                 <p class="comment-date">

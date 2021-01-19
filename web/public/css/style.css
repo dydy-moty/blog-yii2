@@ -1660,3 +1660,12 @@ p.go-back-home a:hover {
     background-color: #27ae60;
 }
 
+table {
+    table-layout: fixed;
+}
+
+
+
+
+
+

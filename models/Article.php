@@ -243,6 +243,14 @@ class Article extends \yii\db\ActiveRecord
         return ($article_IdArray) ? $article_Id = ArrayHelper::getColumn($article_IdArray, 'id')[0] : null;
     }
 
+    public static function getIdCount() {
+       $idCount = Article::find()
+            ->select('id')
+            ->asArray()
+            ->all();
+        return count($idCount);
+    }
+
 
 
 
