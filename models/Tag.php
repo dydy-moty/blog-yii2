@@ -61,11 +61,9 @@ class Tag extends \yii\db\ActiveRecord
     }
 
     public static function getIdCount() {
-        $idCount = Tag::find()
+        return $idCount = Tag::find()
             ->select('id')
-            ->asArray()
-            ->all();
-        return count($idCount);
+            ->count();
     }
 
 //    public static function getArticlesByTag($id)

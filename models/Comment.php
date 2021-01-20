@@ -99,19 +99,15 @@ class Comment extends \yii\db\ActiveRecord
     }
 
     public static function getIdCount() {
-        $idCount = Comment::find()
+        return $idCount = Comment::find()
             ->select('id')
-            ->asArray()
-            ->all();
-        return count($idCount);
+            ->count();
     }
 
     public static function getStatusCount() {
-        $idCount = Comment::find()
+        return $idCount = Comment::find()
             ->select('status')
             ->where(['status' => 0])
-            ->asArray()
-            ->all();
-        return count($idCount);
+            ->count();
     }
 }

@@ -76,11 +76,9 @@ class Category extends \yii\db\ActiveRecord
     }
 
     public static function getIdCount() {
-        $idCount = Category::find()
+        return $idCount = Category::find()
             ->select('id')
-            ->asArray()
-            ->all();
-        return count($idCount);
+            ->count();
     }
 
 }
